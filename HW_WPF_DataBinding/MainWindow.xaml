@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <ListView VerticalContentAlignment="Center">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="25">Id</GridViewColumn>
+                    <GridViewColumn Width="289">Fullname</GridViewColumn>
+                    <GridViewColumn Width="200">Division</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>
