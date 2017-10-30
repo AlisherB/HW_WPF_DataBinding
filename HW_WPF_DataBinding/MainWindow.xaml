@@ -7,15 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <ListView VerticalContentAlignment="Center">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="25">Id</GridViewColumn>
-                    <GridViewColumn Width="289">Fullname</GridViewColumn>
-                    <GridViewColumn Width="200">Division</GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-
+        <DataGrid Name="employeesGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Id}" Header="Id" Width="30"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Имя" Width="70*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Surname}" Header="Фамилия" Width="120*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Division}" Header="Должность" Width="100*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

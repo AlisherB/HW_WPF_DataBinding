@@ -1,32 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace HW_WPF_DataBinding
 {
-    public class Employee
+    public class Employee : INotifyPropertyChanged
     {
         private long id;
-        private string fullname;
+        private string name;
+        private string surname;
+        
         private Division division;
 
         public long Id
         {
             get { return id; }
-            set { id = value; }
+            set { id = value; OnPropertyChanged("Id"); }
+        }
+        
+        public string Name
+        {
+            get { return name; }
+            set { name = value; OnPropertyChanged("Name"); }
         }
 
-        public string Fullname
+        public string Surname
         {
-            get { return fullname; }
-            set { fullname = value; }
+            get { return surname; }
+            set { surname = value; OnPropertyChanged("Surname"); }
         }
+       
         public Division DivisionName
         {
             get { return division; }
-            set { division = value; }
+            set { division = value; OnPropertyChanged("DivisionName"); }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged([CallerMemberName] string property = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
     }
 }

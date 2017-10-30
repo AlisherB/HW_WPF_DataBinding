@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HW_WPF_DataBinding
 {
@@ -21,22 +9,43 @@ namespace HW_WPF_DataBinding
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<string> employee;
-        ObservableCollection<string> division;
+        ObservableCollection<Employee> employees;
+
         public MainWindow()
         {
             InitializeComponent();
-            employee = new ObservableCollection<string>
-            (
-               new Employee
-               {
-                   Id=1,
-                   Fullname="Ivan Petrovich",
-                   
-               },
-            );
-                
 
+            Division d1 = new Division
+            {
+                Id = 1,
+                DivisionName = "Director"
+            };
+            Division d2 = new Division
+            {
+                Id = 2,
+                DivisionName = "Worker"
+            };
+
+
+            employees = new ObservableCollection<Employee>
+            (
+                new List<Employee>
+                {
+                    new Employee
+                    {
+                        Id = 1, Name = "Vasya", Surname = "Pupkin", DivisionName = d1
+                    },
+                    new Employee
+                    {
+                        Id = 2, Name = "Ivan", Surname = "Petrovich", DivisionName = d2
+                    },
+                    new Employee
+                    {
+                        Id = 3, Name = "Petr", Surname = "Ivanov", DivisionName = d2
+                    },
+                }
+            );
+            employeesGrid.ItemsSource = employees;
         }
     }
 }
